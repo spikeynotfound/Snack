@@ -1,0 +1,119 @@
+@font-face {
+    font-family: 'MGPixel';
+    src: url('../fonts/MGPixel.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    mix-blend-mode: multiply;
+    opacity: 0.8;
+    filter: brightness(0.5);
+}
+html, body {
+        height: 100%;
+        margin: 0;
+        }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #282C34;
+    }
+    canvas {
+        border: 5px solid goldenrod;
+        
+    }
+
+
+    .title {
+        position: absolute;
+        top: 5px;
+        text-align: center;
+        font-family: 'MGPixel';
+        font-size: 250px;
+        color: goldenrod;
+        text-shadow: 2px 2px 4px black;
+    }
+
+    .score-card {
+        position: absolute;
+        top: 25px;
+        right: 20px;
+        font-family: 'MGPixel';
+        font-size: 15px;
+        color: whitesmoke;
+    }
+
+    .score {
+        position: relative;
+        color: #abb2bf; 
+        font-family: 'MGPixel'; 
+        font-size: 25px; font-style: bold;
+    }
+
+    #start-screen{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #play-button {
+        position: absolute;
+        bottom: 150px;            
+        padding: 15px 100px;
+        font-family: 'MGPixel';
+        font-size: 75px;
+        background-color: goldenrod;
+        color: #282C34;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        border-radius: 40px;
+        transition: all 0.3s ease;
+    }
+
+
+    .game-board {
+        position: relative;
+        width: 600px;
+        height: 600px;
+
+        /* center the entire game board */
+        margin: 0 auto;
+        grid-template-rows: repeat(15, 1fr);
+        grid-template-columns: repeat(15, 1fr);
+    }
+
+    .game-canvas,
+    #board-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 600px;
+        height: 600px;
+        grid-template-rows: repeat(15, 1fr);
+        grid-template-columns: repeat(15, 1fr);
+    }
+    #board-bg {
+        z-index: 0;
+    }
+
+    .game-canvas {
+        z-index: 1;
+    }
+    #yotsugiCanvas {
+        border: 5px solid cyan;
+    }
+
+    #shinobuCanvas {
+        border: 5px solid goldenrod;
+    }

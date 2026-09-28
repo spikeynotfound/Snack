@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack</title>
+
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+</head>
+
+<body id="game-screen">
+    <img src="../static/images/background.png" alt="bg" class="background-image">
+
+    <div class="game-board">
+        <!-- bg board - static -->
+        <canvas id="board-bg" width="600" height="600"></canvas>
+
+        <!-- fg board - constantly redrawn -->
+        <canvas class="game-canvas" id="board-id" width="600" height="600"></canvas>
+    </div>
+    
+
+    <div class="score-card">
+        SCORE: &nbsp;<span class="score">0</span> &emsp;
+        HIGH SCORE: &nbsp;<span class="score">0</span>
+    </div>
+
+    <script src="../static/js/script.js"></script>
+
+</body>
+</html>
