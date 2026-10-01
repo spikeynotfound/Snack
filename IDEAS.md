@@ -1,8 +1,7 @@
 ##Snake but Shinobu eating donuts
 Can expand it later with another character: Yotsugi and icecream
 Nadeko and ofuda
+Miku and Negi
 
 
 
-
-AOT game with basic movement and you kill titans that spawn randomly

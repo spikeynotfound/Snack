@@ -1,67 +1,25 @@
-// HOME and Character Customization
-// const dynamicId = "board-id";
-// const canvasID = document.getElementById(dynamicId);
 
-// const startScreen = document.querySelector("#start-screen");
-// const charScreen = document.querySelector("#char-screen");
-// const gameScreen = document.querySelector("#game-screen");
-
-// const playButton = document.querySelector("#play-button");
-
-// playButton.addEventListener("click", () => {
-//     startScreen.hidden = true;
-//     charScreen.hidden = false;
-// });
-
-function createImage(src){
+export function createImage(src){
     const image = new Image();
     image.src = src;
     return image;
 }
 
-const characters = {
-    yotsugi: {
-        snake: createImage("../static/images/yotsugi/snake.jpg"),
-        food: createImage("../static/images/yotsugi/food.jpg")
-        // background: "../static/images/yotsugi/background.png"
-    },
-
-    shinobu: {
-        snake: createImage("../static/images/shinobu/snake.jpg"),
-        food: createImage("../static/images/shinobu/food.jpg")
-        // background: "../static/images/shinobu/background.png"
-    }
-};
-
-let currentChara = characters.yotsugi;
-
-// function charaSelection(chara){
-//     switch (chara) {
-//         case "yotsugi":
-//             canvasID.id = "yotsugiCanvas";
-//             break;
-
-//         case "shinobu":
-//             canvasID.id = "shinobuCanvas";
-//             break;
-        
-//         default:
-//             canvasID.id = "shinobuCanvas";
-//             break;
-//     }
-// }
-
-
-
 // variables and constants
 
+let currentChara = null;
+
+const scoreDisplay = document.getElementById("score-value");
+const highScoreDisplay = document.getElementById("high-score");
+
 let score = 0;
-let highScore = 0;
+let highScore = localStorage.getItem("snakeHighScore") ? parseInt(localStorage.getItem("snakeHighScore")) : 0;
+
+highScoreDisplay.textContent = highScore;
+
 let lastUpdate = 0;
 const updateInterval = 100;
-let snakeArr = [
-    {x:7 , y:7}
-];
+let snakeArr = [{x:7 , y:7}];
 let food = {x: 0 , y: 0};
 let velocity = {x:0 , y:0};
 
@@ -75,7 +33,6 @@ const bgctx = bgCanvas.getContext('2d');
 // Grid Configuration
 const cellSize = 40;
 const boardSize = 15;
-const canvasSize = boardSize * cellSize;
 
 // Grass Color
 const lightGrass = '#4c9a2a';
@@ -144,9 +101,13 @@ function updateSnake(){
 
     // EAT?
     if(newHead.x === food.x && newHead.y === food.y) {
-        score ++;
+        score++;
+        scoreDisplay.textContent = score; //update score
+
         if (score > highScore){
             highScore = score;
+            highScoreDisplay.textContent = highScore; //update highscore
+            localStorage.setItem("snakeHighScore", highScore);
         }
         placeFood();
     }
@@ -183,12 +144,22 @@ function placeFood(){
 
 // draw the sprites of food
 function drawFood(){
+
+    if (!currentChara) {
+        return; 
+    }
+
     fgctx.drawImage(currentChara.food, food.x * cellSize, food.y * cellSize, cellSize, cellSize);
 
 }
 
 // draw the sprites of snake
 function drawSnake(){
+
+    if (!currentChara) {
+        return; 
+    }
+
     for (const segment of snakeArr){
         fgctx.drawImage(currentChara.snake, segment.x * cellSize, segment.y * cellSize, cellSize, cellSize);
     }
@@ -229,8 +200,11 @@ window.addEventListener('keydown', e =>{
     }
 });
 
-drawGameBoard();
-placeFood();
-drawForeground();
-window.requestAnimationFrame(main);
+export function startGame(charcaterData){
+    currentChara = charcaterData;  //safer this way
+    drawGameBoard();
+    placeFood();
+    drawForeground();
+    window.requestAnimationFrame(main);
+}
 

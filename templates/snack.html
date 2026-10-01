@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+</head>
+<body>
+    <img src="../static/images/background.png" alt="bg" class="background-image">
+    
+    <div class="score-card">
+        SCORE: &nbsp;<span id="score-value" class="score">0</span> &emsp;
+        HIGH SCORE: &nbsp;<span id="high-score" class="score">0</span>
+    </div>
+
+    <!-- <div class="home">
+        <img src="../static/images/home.png" alt="Home">
+    </div> -->
+
+    <div id="start-screen" class="screen">
+        <p class="title">SNACK</p>
+        <button id="play-button">PLAY</button>
+    </div>
+
+    <div id="char-screen" class="screen hidden">
+        <h1>Choose your character</h1>
+
+        <div class="char-grid">
+            <button class="character" data-character="shinobu">
+                <img src="../static/images/shinobu/snake.jpg" alt="Shinobu">
+                Shinobu
+            </button>
+            <button class="character" data-character="yotsugi">
+                <img src="../static/images/yotsugi/snake.jpg" alt="Yotsugi">
+                Yotsugi
+            </button>
+            <button class="character" data-character="yotsugi">
+                <img src="../static/images/yotsugi/snake.jpg" alt="Yotsugi">
+                Yotsugi
+            </button>
+            <button class="character" data-character="yotsugi">
+                <img src="../static/images/yotsugi/snake.jpg" alt="Yotsugi">
+                Yotsugi
+            </button>
+            <button class="character" data-character="yotsugi">
+                <img src="../static/images/yotsugi/snake.jpg" alt="Yotsugi">
+                Yotsugi
+            </button>
+            <button class="character" data-character="yotsugi">
+                <img src="../static/images/yotsugi/snake.jpg" alt="Yotsugi">
+                Yotsugi
+            </button>
+        </div>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+
+        <div class="game-board">
+            <!-- bg board - static -->
+            <canvas id="board-bg" width="600" height="600"></canvas>
+
+            <!-- fg board - constantly redrawn -->
+            <canvas class="game-canvas" id="board-id" width="600" height="600"></canvas>
+        </div>
+        
+    </div>
+    
+    
+
+    <script src="../static/js/home.js" type="module" defer></script>
+    <script src="../static/js/script.js" type="module" defer></script>
+
+</body>
+</html>
